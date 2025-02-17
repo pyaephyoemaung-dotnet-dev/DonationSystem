@@ -1,0 +1,27 @@
+﻿@model List<ListModel>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <article class="flex max-w-xl flex-col bg-gray-700 rounded-lg px-6 py-8 shadow-xl ring ring-gray-900/5 items-start justify-between">
+            <div class="flex items-center gap-x-4 text-xs">
+                <time datetime="2020-03-16" class="text-white">@item.Date</time>
+                <span class="relative z-10 rounded-full bg-gray-500 px-3 py-1.5 font-medium text-gray-800 hover:bg-gray-100">@item.categories</span>
+            </div>
+            <div class="group relative">
+                <h3 class="mt-3 text-lg font-semibold text-white group-hover:text-gray-400">@item.name</h3>
+                <p class="mt-5 line-clamp-3 text-sm text-gray-300">@item.description</p>
+            </div>
+            <div class="relative mt-8 flex items-center gap-x-4">
+                <img src="@item.profile"
+                     alt="" class="w-10 h-10 rounded-full bg-gray-50">
+                <div class="text-sm">
+                    <p class="font-semibold text-white">
+                        <a href="/User/Index">@item.name</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+    }
+}
