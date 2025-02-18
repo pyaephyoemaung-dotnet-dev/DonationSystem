@@ -23,7 +23,7 @@ namespace DonationSystem.Controllers
         {
             await _db.SignUp.AddAsync(signupModel);
             await _db.SaveChangesAsync();
-            return Redirect("/Home");
+            return Redirect("/User");
         }
     }
 }

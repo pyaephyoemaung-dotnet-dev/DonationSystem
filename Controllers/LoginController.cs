@@ -37,7 +37,7 @@ namespace DonationSystem.Controllers
                 sessionExpired = SessionExpired
             });
             await _db.SaveChangesAsync();
-            return Redirect("/Home");
+            return RedirectToAction("Index", "User", new { userId = item.userId });
         }
     }
 }

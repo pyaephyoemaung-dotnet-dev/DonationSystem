@@ -11,10 +11,12 @@ namespace DonationSystem.Controllers
         {
             _db = db;
         }
-
-        public IActionResult Index()
+        [HttpGet("{userId}")]
+        public IActionResult Index(string userId)
         {
-            return View();
+            var user = _db.SignUp.FirstOrDefault(x => x.userId == userId);
+            if (user is null) return Redirect("/Errors");
+            return View(user);
         }
     }
 }
