@@ -12,5 +12,6 @@ namespace DonationSystem.DataBase
         public DbSet<PostModel> Posts { get; set; }
         public DbSet<CampainModel> Campains { get; set; }
         public DbSet<ListModel> Blog { get; set; }
+        public DbSet<SessionModel> SessionBlog { get; set; }
     }   
 }

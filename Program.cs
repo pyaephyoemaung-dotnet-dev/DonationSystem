@@ -1,4 +1,5 @@
 using DonationSystem.DataBase;
+using DonationSystem.Middlewares;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseCookiesMiddleware();
 app.UseRouting();
 
 app.UseAuthorization();
@@ -30,7 +33,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Signup}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 
