@@ -1,21 +1,22 @@
 ﻿using DonationSystem.DataBase;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DonationSystem.Controllers
 {
     public class UserController : Controller
     {
         private readonly AppDbContext _db;
-
         public UserController(AppDbContext db)
         {
             _db = db;
         }
         [HttpGet("{userId}")]
-        public IActionResult Index(string userId)
+        public async Task<IActionResult> Index(string userId)
         {
-            var user = _db.SignUp.FirstOrDefault(x => x.userId == userId);
-            if (user is null) return Redirect("/Errors");
+            var user  = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
+            if(user is null) return Redirect("/Errors");
+
             return View(user);
         }
     }

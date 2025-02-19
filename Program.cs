@@ -1,5 +1,4 @@
 using DonationSystem.DataBase;
-using DonationSystem.Middlewares;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +23,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseCookiesMiddleware();
 app.UseRouting();
 
 app.UseAuthorization();

@@ -9,9 +9,15 @@ namespace DonationSystem.DataBase
         {
         }
         public DbSet<SignupModel> SignUp { get; set; }
-        public DbSet<PostModel> Posts { get; set; }
+        public DbSet<PostModel> UserBlog { get; set; }
         public DbSet<CampainModel> Campains { get; set; }
         public DbSet<ListModel> Blog { get; set; }
         public DbSet<SessionModel> SessionBlog { get; set; }
-    }   
+        public DbSet<ProfileModel> Profile { get; set; }
+    }
+    public class UserProfile
+    {
+        public SignupModel signupModel { get; set; }
+        public List<ProfileModel> profileModel { get; set; }
+    }
 }
