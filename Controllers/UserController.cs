@@ -1,4 +1,5 @@
 ﻿using DonationSystem.DataBase;
+using DonationSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,13 +12,35 @@ namespace DonationSystem.Controllers
         {
             _db = db;
         }
-        [HttpGet("{userId}")]
+        [HttpGet("/User/Index/{userId}")]
         public async Task<IActionResult> Index(string userId)
         {
-            var user  = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
-            if(user is null) return Redirect("/Errors");
+            var user = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
 
-            return View(user);
+            if (user == null)
+            {
+                return Redirect("/Errors");
+            }
+
+            List<PostModel> post = new List<PostModel>
+            {
+                new PostModel
+                {
+                    type = user.type,
+                    name = user.name,
+                    userId = user.userId
+                }
+            };
+           
+
+            UserProfile userProfile = new UserProfile
+            {
+                signupModel = user,
+                postModels = post
+            };
+            
+            return View(userProfile);
         }
+
     }
 }

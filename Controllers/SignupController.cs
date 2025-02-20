@@ -22,8 +22,15 @@ namespace DonationSystem.Controllers
         public async Task<IActionResult> Index(SignupModel signupModel)
         {
             await _db.SignUp.AddAsync(signupModel);
+            //var item = new PostModel
+            //{
+            //    type = signupModel.type,
+            //    name = signupModel.name,
+            //    userId = signupModel.userId
+            //};
+            //await _db.PostBlog.AddRangeAsync(item);
             await _db.SaveChangesAsync();
-            return Redirect("/User");
+            return RedirectToAction("Index", "User", new { userId = signupModel.userId });
         }
     }
 }

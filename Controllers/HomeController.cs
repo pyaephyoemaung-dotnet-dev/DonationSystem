@@ -29,24 +29,24 @@ public class HomeController : Controller
     {
         _logger.LogInformation("Section received: {Section}", section);
 
-        List<ListModel> items = null;
+        List<PostModel> items = null;
 
         if (section == "bobwr")
         {
-            items = _db.Blog.Where(x => x.categories == "bobwr").ToList();
+            items = _db.PostBlog.Where(x => x.type == "boebwr").ToList();
             return PartialView("_Bobwryeiktar", items);
         }
         else if (section == "miba")
         {
-            items = _db.Blog.Where(x => x.categories == "miba").ToList();
+            items = _db.PostBlog.Where(x => x.type == "miba").ToList();
             return PartialView("_Miba", items);
         }
         else if (section == "yaybay")
         {
-            items = _db.Blog.Where(x => x.categories == "yaybay").ToList();
+            items = _db.PostBlog.Where(x => x.type == "yaybay").ToList();
             return PartialView("_Yaybay", items);
         }
-        return PartialView("_Mibay", _db.Blog.ToList()); 
+        return PartialView("_Mibay", _db.PostBlog.ToList()); 
         
     }
 
