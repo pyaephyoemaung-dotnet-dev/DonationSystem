@@ -16,5 +16,6 @@ namespace DonationSystem.Models
         public DateTime? created_at { get; set; } = System.DateTime.Now;
         public string type { get; set; }
         public string title { get; set; }
+        public string role { get; set; }
     }
 }

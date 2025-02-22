@@ -30,24 +30,24 @@ namespace DonationSystem.Controllers
 
             if (postImage != null && postImage.Length > 0)
             {
-                // Ensure the "wwwroot/uploads" directory exists
+                
                 string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
                 if (!Directory.Exists(uploadsFolder))
                 {
                     Directory.CreateDirectory(uploadsFolder);
                 }
 
-                // Create a unique file name
+                
                 string fileName = $"{Guid.NewGuid()}_{postImage.FileName}";
                 string filePath = Path.Combine(uploadsFolder, fileName);
 
-                // Save the file
+                
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await postImage.CopyToAsync(stream);
                 }
 
-                // Store only the relative path
+               
                 imagePath = $"/uploads/{fileName}";
             }
 
@@ -55,11 +55,12 @@ namespace DonationSystem.Controllers
             {
                 name = user.name,
                 description = model.description,
-                postImage = imagePath!,  // Store the image path in the database
+                postImage = imagePath!,  
                 profile = user.profile,
                 userId = user.userId,
                 type = user.type,
-                title = model.title
+                title = model.title,
+                role = user.role
             };
 
             _db.PostBlog.Add(post);

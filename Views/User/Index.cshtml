@@ -30,9 +30,6 @@
             </p>
             <div class="mt-4 space-x-4">
                 <button class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
-                    Edit profile
-                </button>
-                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
                     Message
                 </button>
             </div>
@@ -50,16 +47,18 @@
         </div>
 
         <!-- Post Creation -->
-        <div class="p-4 border-t">
-            <div class="flex items-center space-x-3">
-                <img src="@Model.signupModel.profile" class="w-12 h-12 rounded-full" alt="User">
-                <a href="/Post/Index/@Model.signupModel.userId" class="text-white hover:text-blue-500">Create post here.</a>
-                <i class="fa-solid fa-image text-lg font-semibold text-blue-400"></i>
+        @if(@Model.signupModel.role == "page"){
+            <div class="p-4 border-t">
+                <div class="flex items-center space-x-3">
+                    <img src="@Model.signupModel.profile" class="w-12 h-12 rounded-full" alt="User">
+                    <a href="/Post/Index/@Model.signupModel.userId" class="text-white hover:text-blue-500">Create post here.</a>
+                    <i class="fa-solid fa-image text-lg font-semibold text-blue-400"></i>
+                </div>
             </div>
-        </div>
+        }
 
 
-        @if (Model.postModels != null && Model.postModels.Any(p => !string.IsNullOrEmpty(p.description)))
+        @if (Model.postModels != null && Model.postModels.Any(x => !string.IsNullOrEmpty(x.description)))
         {
             foreach (var item in Model.postModels)
             {
@@ -73,7 +72,12 @@
                                     <p class="text-gray-500 text-sm">@item.created_at?.ToString("MMMM dd, yyyy")</p>
                                 </div>
                             </div>
-                            <a href="">Delete</a>
+                            <div class="flex items-center space-x-3">
+                                @if(item.role == "page"){
+                                    <a href="/User/Edit/@item.userId"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="/User/Delete/@item.userId"><i class="fa-solid fa-trash"></i></a>
+                                }
+                            </div>
                         </div>
                         <h4 class="font-semibold mt-3">@item.title</h4>
                         <p class="mt-2 line-clamp-3 text-gray-800">@item.description</p>
