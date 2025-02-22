@@ -22,25 +22,21 @@ namespace DonationSystem.Controllers
                 return Redirect("/Errors");
             }
 
-            List<PostModel> post = new List<PostModel>
-            {
-                new PostModel
-                {
-                    type = user.type,
-                    name = user.name,
-                    userId = user.userId
-                }
-            };
-           
+            // Fetch all posts related to this user
+            var userPosts = await _db.PostBlog
+                .Where(p => p.userId == userId)
+                .OrderByDescending(p => p.created_at) // Latest posts first
+                .ToListAsync();
 
             UserProfile userProfile = new UserProfile
             {
                 signupModel = user,
-                postModels = post
+                postModels = userPosts
             };
-            
+
             return View(userProfile);
         }
+
 
     }
 }

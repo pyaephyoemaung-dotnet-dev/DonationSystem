@@ -20,4 +20,9 @@ namespace DonationSystem.DataBase
         public SignupModel signupModel { get; set; }
         public List<PostModel> postModels { get; set; }
     }
+    public class MessageModel
+    {
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
+    }
 }

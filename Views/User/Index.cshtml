@@ -19,7 +19,7 @@
     <div class="max-w-4xl mx-auto bg-gray-700 shadow-lg rounded-lg overflow-hidden">
         <!-- Profile Picture -->
         <div class="flex justify-center mt-8">
-            <img src="" class="w-32 h-32 rounded-full border-4 border-white shadow-md" alt="Profile">
+            <img src="@Model.signupModel.profile" class="w-32 h-32 rounded-full border-4 border-white shadow-md" alt="Profile">
         </div>
 
         <!-- Page Info -->
@@ -52,7 +52,7 @@
         <!-- Post Creation -->
         <div class="p-4 border-t">
             <div class="flex items-center space-x-3">
-                <img src="" class="w-12 h-12 rounded-full" alt="User">
+                <img src="@Model.signupModel.profile" class="w-12 h-12 rounded-full" alt="User">
                 <a href="/Post/Index/@Model.signupModel.userId" class="text-white hover:text-blue-500">Create post here.</a>
                 <i class="fa-solid fa-image text-lg font-semibold text-blue-400"></i>
             </div>
@@ -65,19 +65,23 @@
             {
                 <div class="p-4 border-t space-y-6">
                     <div class="bg-white shadow-md rounded-lg p-4">
-                        <div class="flex items-center space-x-3">
-                            <img src="" class="w-12 h-12 rounded-full">
-                            <div>
-                                <h4 class="font-semibold">@item.name</h4>
-                                <p class="text-gray-500 text-sm">@item.created_at</p>
+                        <div class="flex justify-between space-x-3">
+                            <div class="flex items-center space-x-3">
+                                <img src="@item.profile" class="w-12 h-12 rounded-full" alt="User Profile">
+                                <div>
+                                    <h4 class="font-semibold">@item.name</h4>
+                                    <p class="text-gray-500 text-sm">@item.created_at?.ToString("MMMM dd, yyyy")</p>
+                                </div>
                             </div>
+                            <a href="">Delete</a>
                         </div>
-                        <p class="mt-2">
-                            @item.description
-                        </p>
+                        <h4 class="font-semibold mt-3">@item.title</h4>
+                        <p class="mt-2 line-clamp-3 text-gray-800">@item.description</p>
 
-                        <img src="" class="mt-2 rounded-lg" alt="Post Image">
-
+                        @if (!string.IsNullOrEmpty(item.postImage))
+                        {
+                            <img src="@item.postImage" class="mt-2 rounded-lg w-full h-auto" alt="Post Image">
+                        }
                     </div>
                 </div>
             }
@@ -86,6 +90,7 @@
         {
             <p class="text-center text-gray-400 border-t py-24">No posts available.</p>
         }
+
 
     </div>
 }

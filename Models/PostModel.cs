@@ -15,5 +15,6 @@ namespace DonationSystem.Models
         public string userId { get; set; }
         public DateTime? created_at { get; set; } = System.DateTime.Now;
         public string type { get; set; }
+        public string title { get; set; }
     }
 }

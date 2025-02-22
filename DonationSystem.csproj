@@ -13,11 +13,10 @@
 
 	<ItemGroup>
 	  <Folder Include="wwwroot\lib\Image\" />
-	  <Folder Include="wwwroot\uploads\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="wwwroot\lib\Image\1060-removebg-preview.png" />
+	  <None Include="wwwroot\uploads\1060-removebg-preview.png" />
 	</ItemGroup>
 
 	<ItemGroup>

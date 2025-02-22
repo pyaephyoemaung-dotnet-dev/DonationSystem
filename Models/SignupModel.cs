@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace DonationSystem.Models
 {
@@ -16,6 +17,7 @@ namespace DonationSystem.Models
             public string type { get; set; }
             public string address { get; set; }
             public string password { get; set; }
-            public DateTime created_at { get; set; } = System.DateTime.Now;
+        public DateTime created_at { get; set; } = System.DateTime.Now;
+            public string profile { get; set; }
     }
 }

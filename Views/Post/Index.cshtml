@@ -2,12 +2,20 @@
 @if(Model is not null){
     <section class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded p-6 bg-gray-800">
-            <form method="POST" action="/Post/Create" enctype="multipart/form-data" class="space-y-6">
+            <form method="POST" action="/Post/Index/@Model.userId" enctype="multipart/form-data" class="space-y-6">
                 <div class="flex items-center space-x-3">
-                    <img src="" class="w-12 h-12 rounded-full" alt="User">
+                    <img src="@Model.profile" class="w-12 h-12 rounded-full" alt="User">
                     <div>
                         <h4 class="font-semibold text-white">@Model.name</h4>
                         <p class="text-white text-sm">@Model.type</p>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-white">Title</label>
+                    <div class="mt-2">
+                        <input type="text" name="title" required
+                               class="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-base text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                     </div>
                 </div>
 
@@ -23,7 +31,7 @@
                     <input type="file" name="postImage" class="w-full mt-1 border rounded-lg p-2 text-white focus:ring-2 focus:ring-blue-400">
                 </div>
 
-                <div>
+                <div calss="py-3">
                     <button type="submit"
                             class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm leading-6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2">
                         Save
