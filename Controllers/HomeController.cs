@@ -1,4 +1,4 @@
-using DonationSystem.DataBase;
+﻿using DonationSystem.DataBase;
 using DonationSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -31,19 +31,19 @@ public class HomeController : Controller
 
         List<PostModel> items = null;
 
-        if (section == "bobwr")
+        if (section == "ဘိုးဘွားရိပ်သာ")
         {
-            items = _db.PostBlog.Where(x => x.type == "boebwr").ToList();
+            items = _db.PostBlog.Where(x => x.type == "ဘိုးဘွားရိပ်သာ").ToList();
             return PartialView("_Bobwryeiktar", items);
         }
-        else if (section == "miba")
+        else if (section == "မိဘမဲ့")
         {
-            items = _db.PostBlog.Where(x => x.type == "miba").ToList();
+            items = _db.PostBlog.Where(x => x.type == "မိဘမဲ့").ToList();
             return PartialView("_Miba", items);
         }
-        else if (section == "yaybay")
+        else if (section == "ရေဘေး")
         {
-            items = _db.PostBlog.Where(x => x.type == "yaybay").ToList();
+            items = _db.PostBlog.Where(x => x.type == "ရေဘေး").ToList();
             return PartialView("_Yaybay", items);
         }
         return PartialView("_Mibay", _db.PostBlog.ToList()); 

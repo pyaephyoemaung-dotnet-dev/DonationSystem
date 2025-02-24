@@ -86,5 +86,48 @@ namespace DonationSystem.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index", "User", new { userId = user.userId });
         }
+        [HttpGet("/User/EditDetail/{userId}")]
+        public async Task<IActionResult> EditDetail(string userId)
+        {
+            var user = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
+            if (user == null) return Redirect("/Errors");
+            return View("EditDetail", user);
+        }
+        [HttpPost("/User/UpdateDetail/{userId}")]
+        public async Task<IActionResult> UpdateDetail(string userId,SignupModel signup, IFormFile profile)
+        {
+            var user = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
+            if (user == null) return Redirect("/Errors");
+            string imagePath = null;
+            if (profile != null && profile.Length > 0)
+            {
+                // Ensure the "wwwroot/uploads" directory exists
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+                // Create a unique file name
+                string fileName = $"{Guid.NewGuid()}_{profile.FileName}";
+                string filePath = Path.Combine(uploadsFolder, fileName);
+                // Save the file
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await profile.CopyToAsync(stream);
+                }
+                // Store only the relative path
+                imagePath = $"/uploads/{fileName}";
+            }
+            user.name = signup.name;
+            user.email = signup.email;
+            user.profile = imagePath!;
+            user.phone = signup.phone;
+            user.address = signup.address;
+            user.password = signup.password;
+            user.type = signup.type;
+            user.role = signup.role;
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index", "User", new { userId = user.userId });
+        }
     }
 }

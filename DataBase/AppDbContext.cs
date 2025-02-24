@@ -8,6 +8,7 @@ namespace DonationSystem.DataBase
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
+        public DbSet<Webprofile> WebProfiles { get; set; }
         public DbSet<SignupModel> SignUp { get; set; }
         public DbSet<PostModel> PostBlog { get; set; }
         public DbSet<CampainModel> Campains { get; set; }
@@ -25,4 +26,10 @@ namespace DonationSystem.DataBase
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
     }
+    public class Dashboard
+    {
+        public List<SignupModel> signupModels { get; set; }
+        public List<PostModel> postModels { get; set; }
+    }
 }
+

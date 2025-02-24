@@ -1,0 +1,48 @@
+﻿@model List<SignupModel>
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="p-6 bg-gray-900 min-h-screen">
+    <div class="max-w-6xl mx-auto bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold text-white">User List</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="px-6 py-3 text-sm font-semibold">Profile</th>
+                        <th class="px-6 py-3 text-sm font-semibold">Name</th>
+                        <th class="px-6 py-3 text-sm font-semibold">Email</th>
+                        <th class="px-6 py-3 text-sm font-semibold">Phone</th>
+                        <th class="px-6 py-3 text-sm font-semibold">Address</th>
+                        <th class="px-6 py-3 text-sm font-semibold">Type</th>
+                        <th class="px-6 py-3 text-sm font-semibold">Joined</th>
+                        <th class="px-6 py-3 text-center text-sm font-semibold">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="odd:bg-gray-50 even:bg-white text-center hover:bg-gray-200 transition">
+                            <td class="px-6 py-4">
+                                <img class="w-10 h-10 rounded-full object-cover border border-gray-300" src="@item.profile" alt="Profile">
+                            </td>
+                            <td class="px-6 py-4 font-semibold text-gray-700">@item.name</td>
+                            <td class="px-6 py-4 text-gray-600">@item.email</td>
+                            <td class="px-6 py-4 text-gray-600">@item.phone</td>
+                            <td class="px-6 py-4 text-gray-600">@item.address</td>
+                            <td class="px-6 py-4 text-gray-600">@item.type</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">@item.created_at.ToString("yyyy-MM-dd hh:mm tt")</td>
+                            <td class="px-6 py-4 text-center">
+                                @* <a href="/Admin/Edit/@item.userId"><i class="fa-regular fa-pen-to-square"></i></a> *@
+                                <a href="/Admin/Delete/@item.userId"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

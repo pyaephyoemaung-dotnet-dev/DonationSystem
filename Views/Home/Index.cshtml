@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home";
 }
 <nav class="bg-gray-900 sticky top-0 z-50 px-6 mb-5">
@@ -6,7 +7,7 @@
         <div class="flex justify-between items-center">
             <a class="text-2xl font-bold text-blue-600">
                 <img class="mx-auto block h-10 rounded-full sm:mx-0 sm:shrink-0"
-                     src="./lib/Image/1060-removebg-preview.png" alt="" />
+                     src="/uploads/04e866fd-9dc2-4674-bb0a-507d9b450e3d_1060-removebg-preview.png" alt="" />
             </a>
             <a class="mx-1 text-white">ကမ်းလက်</a>
         </div>
@@ -15,8 +16,20 @@
             <li><a href="#blog" class="text-white hover:text-blue-500"><i class="fa-solid fa-people-group"></i></a></li>
             <li><a href="#contact" class="text-white hover:text-blue-500"><i class="fa-solid fa-comment-sms"></i></a></li>
         </ul>
-        <div class="flex justify-between items-center">
-            <a href="/Login/Index" class="text-white focus:outline-none"><i class="fa-solid fa-user"></i></a>
+        <div class="relative">
+            <button id="dropdownButton" class="px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-blue-700 transition flex items-center gap-2">
+                <span><i class="fa-solid fa-user"></i></span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg hidden">
+                <a href="/Signup/Index" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">SIGNUP</a>
+                <hr class="border-gray-200">
+                <a href="/Login/Index" class="block px-4 py-2 text-red-600 hover:bg-gray-100">LOGOUT</a>
+            </div>
         </div>
     </div>
 </nav>
@@ -25,34 +38,32 @@
     <div class="container mx-auto flex flex-col md:flex-row items-center px-6">
         <!-- Left Side (Text) -->
         <div class="md:w-1/2 text-center ms-8 md:text-left">
-            <p class="text-base font-bold tracking-wide line-clamp-3">
-                Welcome to "<span class="text-red-600">ကမ်းလက်</span>" 🤲🎗
+            <p class="text-base font-bold tracking-wide ">
+                "<span class="text-red-600">ကမ်းလက်</span>" မှ ကြိုဆိုပါတယ်။ 🤲🎗
             </p>
-            <h1 class="text-6xl font-bold tracking-wide line-clamp-3">
-                You can show your <span class="text-red-600">humanity</span> here.
+            <h1 class="text-xl font-bold tracking-wide mt-2">
+                သင့်ရဲ့ <span class="text-red-600">လူသားဆန်မူကို</span> ဒီနေရာမှတစ်ဆင့် ထုတ်ဖော်ပြသလိုက်ပါ။
             </h1>
-            <p class="mt-4 text-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex esse sequi expedita,
-                magnam eveniet temporibus asperiores minima, vero placeat illum molestiae excepturi
-                libero numquam quasi dignissimos cumque vel veritatis eaque.
+            <p class="mt-4 text-sm tracking-wide">
+                "လူသားတိုင်းရဲ့ စာနာထောက်ထားမှု၊ ကြင်နာတတ်မှု၊ စွန့်လွှတ်အနစ်နာခံမှုနှင့် မေတ္တာတို့ကို ဖော်ထုတ်နိုင်သည့် နေရာတစ်ခုဖြစ်ပါတယ်။ လောကကြီးတွင် လူသားအချင်းချင်း ကူညီရိုင်းပင်မှု၊ ဝါသနာပါရာများကို မျှဝေခြင်း၊ စိတ်ရင်းစေတနာသန့်ဖြင့် အကျိုးပြုလုပ်ဆောင်ခြင်းတို့သည် လူသားဆန်မှုရဲ့ အဓိကလက္ခဏာများပဲဖြစ်ပါတယ်။ ဒီနေရာလေးမှာ သင့်ရဲ့ စေတနာထားရှိမှု၊ ကြင်နာမှုနှင့် လူသားချင်းစာနာမှုတို့ကို လက်တွဲဖော်ထုတ်ကြပါစို့။"
             </p>
         </div>
 
         <!-- Right Side (Image) -->
         <div class="md:w-1/2 flex justify-center">
-            <img class="h-48 rounded-lg animate-bounce" src="./lib/Image/1060-removebg-preview.png" alt="Photo">
+            <img class="h-48 rounded-lg animate-bounce" src="/uploads/04e866fd-9dc2-4674-bb0a-507d9b450e3d_1060-removebg-preview.png">
         </div>
     </div>
 </section>
 
 <!-- Attitude Section -->
 <section class="bg-gray-900 py-12 my-12 text-white text-center">
-    <p class="my-4 text-lg not-italic">What "ကမ်းလက်" serve</p>
+    <p class="my-4 text-lg not-italic">"ကမ်းလက်" က ဘာကို ဆောင်ရွက်ပေးသလဲ။</p>
     <p class="font-bold text-4xl">
-        <span class="font-bold my-4 text-red-600">Humanitarian</span> aid must reach
+        <span class="font-bold my-4 text-red-600">လူသားချင်းစာနာထောက်ထားမှု </span>အကူအညီများသည်
     </p>
-    <p class="font-bold text-2xl my-4">
-        those in <span class="font-bold text-2xl my-4 text-red-600">need</span>
+    <p class="font-bold text-sm my-4">
+        အမှန်တကယ်လိုအပ်နေသူများထံသိုသာ <span class="font-bold text-sm my-4 text-red-600">ရောက်ရှိစေရမည်။</span>
     </p>
 </section>
 <!-- Attitude Section -->
@@ -61,20 +72,20 @@
         <!-- Feature 1 -->
         <div class="p-6 rounded-lg text-center">
             <div class="text-blue-600 text-6xl animate-bounce">💯</div>
-            <h3 class="mt-4 text-xl font-semibold text-white">Trusted</h3>
-            <p class="mt-2 text-gray-600">Built with Tailwind CSS for speed and efficiency.</p>
+            <h3 class="mt-4 text-xl font-semibold text-white">ယုံကြည်စိတ်ချရမှု</h3>
+            <p class="mt-2 text-sm text-gray-600">ယုံကြည်စိတ်ချစွာလှူဒါန်းနိုင်။</p>
         </div>
-        <!-- Feature 2 -->
+        <!-- Feature 2 --> 
         <div class="p-6 rounded-lg text-center">
             <div class="text-blue-600 text-6xl animate-bounce">🚀</div>
-            <h3 class="mt-4 text-xl font-semibold text-white">Quick donate</h3>
-            <p class="mt-2 text-gray-600">Minimal code with a clean and modern design.</p>
+            <h3 class="mt-4 text-xl font-semibold text-white">လွယ်ကူလျှင်မြန်စွာလှူဒါန်းနိုင်</h3>
+            <p class="mt-2 text-sm text-gray-600">အမှန်တကယ်လိုအပ်သောနေရာများသို အချိန်နှင့်တပြေးညီလှူဒါန်းနိုင်။</p>
         </div>
         <!-- Feature 3 -->
         <div class="p-6 rounded-lg text-center">
             <div class="text-blue-600 text-6xl animate-bounce">🙅‍♂️</div>
-            <h3 class="mt-4 text-xl font-semibold text-white">No need to pay</h3>
-            <p class="mt-2 text-gray-600">No need to pay for service.</p>
+            <h3 class="mt-4 text-xl font-semibold text-white">အခမဲ့ဝန်ဆောင်မူ။</h3>
+            <p class="mt-2 text-sm text-gray-600">ဝန်ဆောင်မူအတွက် အခကြေးငွေပေးရန်မလိုပါ။</p>
         </div>
     </div>
 </section>
@@ -86,16 +97,16 @@
             <div>
             </div>
             <ul class="hidden md:flex space-x-6">
-                <li><a href="" class="text-white hover:text-blue-500 menu-link" data-section="mibay">All</a></li>
-                <li><a href="" class="text-white hover:text-blue-500 menu-link" data-section="bobwr">BoeBwr</a></li>
-                <li><a href="" class="text-white hover:text-blue-500 menu-link" data-section="miba">Miba</a></li>
-                <li><a href="" class="text-white hover:text-blue-500 menu-link" data-section="yaybay">Yaybay</a></li>
+                <li><a href="" class="text-white hover:text-blue-500 menu-link" data-section="မီးဘေး">All</a></li>
+                <li><a href="" class="text-white hover:text-blue-500 menu-link" data-section="ဘိုးဘွားရိပ်သာ">ဘိုးဘွားရိပ်သာ</a></li>
+                <li><a href="" class="text-white hover:text-blue-500 menu-link" data-section="မိဘမဲ့">မိဘမဲ့</a></li>
+                <li><a href="" class="text-white hover:text-blue-500 menu-link" data-section="ရေဘေး">ရေဘေး</a></li>
             </ul>
             <div></div>
         </div>
     </nav>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div id="content-area" class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div id="content-area" class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             @await Html.PartialAsync("_Mibay");
         </div>
     </div>
@@ -108,8 +119,8 @@
             <div class="lg:pt-4 lg:pr-8">
                 <div class="lg:max-w-lg">
                     <h2 class="text-base font-semibold leading-7 text-red-600">Deploy faster</h2>
-                    <p class="mt-2 text-4xl font-semibold tracking-wide text-white sm:text-5xl">
-                        "ကမ်းလက်" workflow
+                    <p class="mt-2 text-xl font-semibold tracking-wide text-white sm:text-2xl">
+                        "ကမ်းလက်"၏လုပ်ငန်းစဥ်
                     </p>
                     <p class="mt-6 text-lg leading-8 text-gray-600">
                         Lorem ipsum, dolor sit amet consectetur adipisicing
@@ -166,7 +177,7 @@
                     </dl>
                 </div>
             </div>
-            <img src="./lib/Image/undraw_teamwork_8val-removebg-preview.png" alt="Product screenshot"
+            <img src="/uploads/fbfea5ac-e1af-4dea-b942-c8555d3a72ce_undraw_teamwork_8val-removebg-preview.png" alt="Product screenshot"
                  class="w-[48rem] max-w-none rounded-xl ring-1 shadow-xl ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
                  width="2432" height="1442">
         </div>
@@ -178,11 +189,9 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
             <div class="max-w-xl lg:max-w-lg">
-                <h2 class="text-4xl font-semibold tracking-tight text-white">Subscribe to our newsletter</h2>
-                <p class="mt-4 text-lg text-gray-300">
-                    Nostrud amet eu ullamco nisi aute in ad minim nostrud
-                    adipisicing
-                    velit quis. Duis tempor incididunt dolore.
+                <h2 class="text-2xl font-semibold tracking-tight text-white">အကြံပြုစာ</h2>
+                <p class="mt-4 text-sm text-gray-300">
+                    ဤနေရာတွင်အကြုံပြုစာများပေးပိုပါ။
                 </p>
                 <div class="mt-6 flex max-w-md gap-x-4">
                     <label for="email-address" class="sr-only">Email address</label>
@@ -191,7 +200,7 @@
                            placeholder="Enter your email">
                     <button type="submit"
                             class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                        Subscribe
+                        ပေးပိုရန်
                     </button>
                 </div>
             </div>
@@ -204,11 +213,9 @@
                                   d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
                         </svg>
                     </div>
-                    <dt class="mt-4 text-base font-semibold text-white">Weekly articles</dt>
-                    <dd class="mt-2 text-base text-gray-400">
-                        Non laboris consequat cupidatat laborum magna.
-                        Eiusmod
-                        non irure cupidatat duis commodo amet.
+                    <dt class="mt-4 text-base font-semibold text-white">အကြံပြုစာလက်ခံရရှိမှု</dt>
+                    <dd class="mt-2 text-sm text-gray-400">
+                        အကြံပြုစာများကိုအားစိစစ်၍လိုအပ်ချက်များအားပြင်ဆင်နိုင်မူ။
                     </dd>
                 </div>
                 <div class="flex flex-col items-start">
@@ -220,9 +227,8 @@
                         </svg>
                     </div>
                     <dt class="mt-4 text-base font-semibold text-white">No spam</dt>
-                    <dd class="mt-2 text-base text-gray-400">
-                        Officia excepteur ullamco ut sint duis proident non
-                        adipisicing. Voluptate incididunt anim.
+                    <dd class="mt-2 text-sm text-gray-400">
+                        အကြံပြုစာများသာပေးပိုပါရန်။
                     </dd>
                 </div>
             </dl>
@@ -230,7 +236,7 @@
     </div>
 </section>
 <!-- Contact section -->
-<footer class="bg-gray-900 text-white">
+<footer class="bg-gray-900 text-center text-white">
     <div class="container mx-auto flex justify-between items-center px-6">
         <p class="text-sm text-gray-400">
             Copyright - 2025, website made by pyae phyoe maung. All
@@ -241,7 +247,7 @@
             <li><a href="#" class="text-white hover:text-blue-500"><i class="fa-brands fa-linkedin"></i></a></li>
             <li><a href="#" class="text-white hover:text-blue-500"><i class="fa-brands fa-instagram"></i></a></li>
             <li><a href="#" class="text-white hover:text-blue-500"><i class="fa-solid fa-at"></i></a></li>
-            <li><a href="#" class="text-white hover:text-blue-500"><i class="fa-brands fa-github"></i></a></li>
+            <li><a href="" class="text-white hover:text-blue-500"><i class="fa-brands fa-github"></i></a></li>
         </ul>
     </div>
 </footer>
@@ -270,6 +276,20 @@
                 var section = $(this).data("section");
                 loadContent(section);
             });
+        });
+    </script>
+    <script>
+        const dropdownButton = document.getElementById('dropdownButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dropdownButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
         });
     </script>
 }
