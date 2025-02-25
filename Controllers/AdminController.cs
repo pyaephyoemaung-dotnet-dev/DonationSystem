@@ -1,5 +1,6 @@
 ﻿using DonationSystem.DataBase;
 using DonationSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,21 +54,20 @@ namespace DonationSystem.Controllers
                 postModels = posts
             };
             return PartialView("_Default", dashboards);
-
         }
         [HttpGet("/Admin/Delete/{userId}")]
         public async Task<IActionResult> Delete(string userId)
         {
             var user = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
-            var post = await _db.PostBlog.FirstOrDefaultAsync(x => x.userId == userId);
+            var post = await _db.PostBlog.FirstOrDefaultAsync(x => x.userId == user.userId);
             if (user == null) return Redirect("/Errors");
             if (post == null) return Redirect("/Errors");
             _db.SignUp.Remove(user);
             _db.PostBlog.RemoveRange(post);
             await _db.SaveChangesAsync();
 
-            var updatedUsers = _db.SignUp.ToList();
-            return View("_Users", updatedUsers); 
+            var updatedUsers = _db.SignUp.OrderByDescending(x => x.Id).ToList();
+            return View("Index",updatedUsers); 
         }
     }
 }

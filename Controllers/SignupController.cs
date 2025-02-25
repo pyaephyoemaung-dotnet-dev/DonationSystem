@@ -36,13 +36,13 @@ namespace DonationSystem.Controllers
                 string fileName = $"{Guid.NewGuid()}_{profile.FileName}";
                 string filePath = Path.Combine(uploadsFolder, fileName);
 
-                // Save the file
+               
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await profile.CopyToAsync(stream);
                 }
 
-                // Store only the relative path
+                
                 imagePath = $"/uploads/{fileName}";
             }
             var user = new SignupModel

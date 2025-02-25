@@ -1,5 +1,6 @@
 ﻿using DonationSystem.DataBase;
 using DonationSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,10 +23,10 @@ namespace DonationSystem.Controllers
                 return Redirect("/Errors");
             }
 
-            // Fetch all posts related to this user
+           
             var userPosts = await _db.PostBlog
                 .Where(x => x.userId == userId)
-                .OrderByDescending(x => x.created_at) // Latest posts first
+                .OrderByDescending(x => x.created_at) 
                 .ToListAsync();
 
             UserProfile userProfile = new UserProfile
@@ -36,7 +37,6 @@ namespace DonationSystem.Controllers
 
             return View(userProfile);
         }
-
         [HttpGet("/User/Edit/{userId}")]
         public async Task<IActionResult> Edit(string userId)
         {
@@ -128,6 +128,54 @@ namespace DonationSystem.Controllers
             user.role = signup.role;
             await _db.SaveChangesAsync();
             return RedirectToAction("Index", "User", new { userId = user.userId });
+        }
+        [HttpGet("/User/History/{userId}")]
+        public async Task<IActionResult>History(string userId)
+        {
+            var user = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
+            if (user == null) return Redirect("/Errors");
+
+            Campain campain = new Campain
+            {
+                signupModel = user,
+               donation = await _db.Donations.Where(x => x.userId == userId).ToListAsync()
+            };
+            return View("History", campain);
+        }
+        [HttpGet("/User/Create/{userId}")]
+        public async Task<IActionResult>Create(string userId)
+        {
+            var user = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
+            if (user == null) return Redirect("/Errors");
+            return View(user);
+        }
+        [HttpPost("/User/Save/{userId}")]
+        public async Task<IActionResult>Save(string userId, Donation donation)
+        {
+            var user = await _db.SignUp.FirstOrDefaultAsync(x => x.userId == userId);
+            if (user == null) return Redirect("/Errors");
+            var donate = new Donation
+            {
+                address = donation.address,
+                phone = donation.phone,
+                DonorName = donation.DonorName,
+                userId = user.userId,
+                Amount = donation.Amount,
+                DonationDate = donation.DonationDate,
+                Email = donation.Email
+            };
+            _db.Donations.Add(donate);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("History", "User", new { userId = user.userId });
+        }
+        [HttpGet("/User/DeleteList/{userId}")]
+        public async Task<IActionResult> DeleteList(string userId)
+        {
+            var user = await _db.Donations.FirstOrDefaultAsync(x => x.userId == userId);
+            if (user == null) return Redirect("/Errors");
+            _db.Donations.Remove(user);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("History", "User", new { userId = user.userId });
         }
     }
 }
